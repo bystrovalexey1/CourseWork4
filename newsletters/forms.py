@@ -33,7 +33,7 @@ class MessageForm(forms.ModelForm):
         fields = ['theme', 'text_letter']
 
     def __init__(self, *args, **kwargs):
-        super(RecipientForm, self).__init__(*args, **kwargs)
+        super(MessageForm, self).__init__(*args, **kwargs)
 
         self.fields['theme'].widget.attrs.update({
             'class': 'form-control',
@@ -49,10 +49,10 @@ class MessageForm(forms.ModelForm):
 class DistributionForm(forms.ModelForm):
     class Meta:
         model = Distribution
-        fields = ['status', 'message', 'recipient']
+        fields = ['status', 'message', 'recipient', 'first_send_data', 'last_send_data']
 
     def __init__(self, *args, **kwargs):
-        super(RecipientForm, self).__init__(*args, **kwargs)
+        super(DistributionForm, self).__init__(*args, **kwargs)
 
         self.fields['status'].widget.attrs.update({
             'class': 'form-control',
@@ -67,4 +67,15 @@ class DistributionForm(forms.ModelForm):
         self.fields['recipient'].widget.attrs.update({
             'class': 'form-control',
             'placeholder': 'Выберите получателей рассылки'
+        })
+
+        self.fields['first_send_data'].widget.attrs.update({
+            'class': 'form-control datetime',
+            'input type': 'date',
+            'placeholder': 'Выберите дату первой рассылки'
+        })
+
+        self.fields['last_send_data'].widget.attrs.update({
+            'class': 'form-control date',
+            'placeholder': 'Выберите дату последней рассылки'
         })

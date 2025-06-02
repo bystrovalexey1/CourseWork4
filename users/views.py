@@ -16,7 +16,7 @@ load_dotenv(override=True)
 
 
 class RegisterView(CreateView):
-    template_name = 'users/register.html'
+    template_name = 'register.html'
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('users:login')
 
@@ -29,7 +29,7 @@ class RegisterView(CreateView):
         host = self.request.get_host()
         url = f'http://{host}/email-confirm/{token}'
         send_mail(
-            subject='Добро пожаловать в интернет-магазин BystrovStore!',
+            subject='Добро пожаловать в интернет-сервис BystrovNewsletters!',
             message = f'Спасибо, что зарегистрировались в нашем сервисе! Для подтверждения почты перейди по ссылке {url}',
             from_email=os.getenv('EMAIL_HOST_USER'),
             recipient_list=[user.email]

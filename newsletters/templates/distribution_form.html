@@ -1,10 +1,10 @@
-{% extends 'catalog/base.html' %}
+{% extends 'base.html' %}
 
-{% block title %}Создание продукта{% endblock %}
+{% block title %}Создание рассылки{% endblock %}
 
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Форма товара</h1>
+    <h1 class="display-4">Форма рассылки</h1>
 </div>
 
 <div class="container mt-5">
@@ -16,9 +16,11 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                     </div>
-                    <a href="{% url 'catalog:category_create' %}" class="form-control btn btn-warning" role="button"
-                       aria-disabled="true">Нажми, если нужной категории нет в списке</a>
-                    <button type="submit" class="mb-2 mt-2 btn btn-primary">Сохранить</button>
+                    <a href="{% url 'newsletters:message_create' %}" class="form-control btn btn-warning mb-3" role="button"
+                       aria-disabled="true">Нажми, если нужного письма нет в списке</a>
+                    <a href="{% url 'newsletters:recipient_create' %}" class="form-control btn btn-warning mb-3" role="button"
+                       aria-disabled="true">Нажми, если нужных получателей нет в списке</a>
+                    <button type="submit" class="mb-2 btn btn-primary">Сохранить</button>
                 </div>
             </form>
         </div>
