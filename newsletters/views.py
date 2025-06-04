@@ -1,18 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
 from django.db.models import Count
-from django.http import request, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views import View
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.core.cache import cache
-from django.views.decorators.cache import cache_page
-from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import models
 from django_apscheduler.models import DjangoJob
 
@@ -23,52 +18,55 @@ from newsletters.models import Recipient, Message, Distribution, NewslettersAtte
 class RecipientCreateView(LoginRequiredMixin, CreateView):
     model = Recipient
     form_class = RecipientForm
-    template_name = 'recipient_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "recipient_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
     def form_valid(self, form):
+        """Успешное создание получателя."""
         form.instance.owner = self.request.user
         messages.success(self.request, "Получатель успешно создан.")
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        """Не успешное создание получателя."""
         messages.error(
             self.request, "Ошибка создания получателя. Проверьте введенные данные."
         )
         return super().form_invalid(form)
 
 
-
 class RecipientUpdateView(LoginRequiredMixin, UpdateView):
     model = Recipient
     form_class = RecipientForm
-    template_name = 'recipient_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "recipient_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class RecipientDeleteView(LoginRequiredMixin, DeleteView):
     model = Recipient
-    template_name = 'recipient_confirm_delete.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "recipient_confirm_delete.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class RecipientDetailView(LoginRequiredMixin, DetailView):
     model = Recipient
-    template_name = 'recipient_detail.html'
+    template_name = "recipient_detail.html"
 
 
 class MessageCreateView(LoginRequiredMixin, CreateView):
     model = Message
     form_class = MessageForm
-    template_name = 'message_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "message_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
     def form_valid(self, form):
+        """Успешное создание сообщения."""
         form.instance.owner = self.request.user
         messages.success(self.request, "Сообщение успешно создано.")
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        """Не успешное создание сообщения."""
         messages.error(
             self.request, "Ошибка создания сообщения. Проверьте введенные данные."
         )
@@ -78,28 +76,29 @@ class MessageCreateView(LoginRequiredMixin, CreateView):
 class MessageUpdateView(LoginRequiredMixin, UpdateView):
     model = Message
     form_class = MessageForm
-    template_name = 'message_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "message_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class MessageDeleteView(LoginRequiredMixin, DeleteView):
     model = Message
-    template_name = 'message_confirm_delete.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "message_confirm_delete.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class MessageDetailView(LoginRequiredMixin, DetailView):
     model = Message
-    template_name = 'message_detail.html'
+    template_name = "message_detail.html"
 
 
 class DistributionCreateView(LoginRequiredMixin, CreateView):
     model = Distribution
     form_class = DistributionForm
-    template_name = 'distribution_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "distribution_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
     def form_valid(self, form):
+        """Успешное создание рассылки"""
         form.instance.owner = self.request.user
         distribution = form.save()
 
@@ -122,32 +121,32 @@ class DistributionCreateView(LoginRequiredMixin, CreateView):
 class DistributionUpdateView(LoginRequiredMixin, UpdateView):
     model = Distribution
     form_class = DistributionForm
-    template_name = 'distribution_form.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "distribution_form.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class DistributionDeleteView(LoginRequiredMixin, DeleteView):
     model = Distribution
-    template_name = 'distribution_confirm_delete.html'
-    success_url = reverse_lazy('newsletters:distribution_list')
+    template_name = "distribution_confirm_delete.html"
+    success_url = reverse_lazy("newsletters:distribution_list")
 
 
 class DistributionDetailView(LoginRequiredMixin, DetailView):
     model = Distribution
-    template_name = 'distribution_detail.html'
+    template_name = "distribution_detail.html"
 
 
 class DistributionListView(LoginRequiredMixin, ListView):
     model = Distribution
-    template_name = 'distribution_list.html'
+    template_name = "distribution_list.html"
 
 
 class HomeListView(ListView):
     model = Distribution
     template_name = "home.html"
 
-
     def get_context_data(self, **kwargs):
+        """Отображает отчеты об успешных рассылках"""
         context = super().get_context_data(**kwargs)
         total_distribution = Distribution.objects.count()
         active_distribution = Distribution.objects.filter(status="запущена").count()
@@ -161,6 +160,8 @@ class HomeListView(ListView):
 
 
 class StartDistributionView(LoginRequiredMixin, View):
+    """Класс для начала рассылки"""
+
     def post(self, request, pk):
         distribution = get_object_or_404(Distribution, pk=pk, owner=request.user)
 
@@ -179,9 +180,7 @@ class StartDistributionView(LoginRequiredMixin, View):
 
 @login_required
 def distribution_reports(request):
-    """
-    Отображает отчеты о попытках рассылки для текущего пользователя.
-    """
+    """Отображает отчеты о попытках рассылки для текущего пользователя."""
 
     distributions = Distribution.objects.filter(owner=request.user)
 
@@ -190,13 +189,19 @@ def distribution_reports(request):
         .values("distribution")
         .annotate(
             total_attempts=Count("distribution"),
-            successful_attempts=Count("distribution", filter=models.Q(attempt_status="успешно")),
-            failed_attempts=Count("distribution", filter=models.Q(attempt_status="не успешно")),
+            successful_attempts=Count(
+                "distribution", filter=models.Q(attempt_status="успешно")
+            ),
+            failed_attempts=Count(
+                "distribution", filter=models.Q(attempt_status="не успешно")
+            ),
         )
     )
 
     # Подготовьте словарь для учета количества попыток для каждой рассылки
-    newsletter_stats = {attempt["distribution"]: attempt for attempt in newsletter_attempts}
+    newsletter_stats = {
+        attempt["distribution"]: attempt for attempt in newsletter_attempts
+    }
 
     # Передача данных в шаблон
     context = {

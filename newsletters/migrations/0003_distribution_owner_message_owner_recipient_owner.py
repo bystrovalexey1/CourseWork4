@@ -8,24 +8,45 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletters', '0002_newslettersattempt'),
+        ("newsletters", "0002_newslettersattempt"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='distribution',
-            name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите автора', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            model_name="distribution",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Укажите автора",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Автор",
+            ),
         ),
         migrations.AddField(
-            model_name='message',
-            name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите автора', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            model_name="message",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Укажите автора",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Автор",
+            ),
         ),
         migrations.AddField(
-            model_name='recipient',
-            name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите автора', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            model_name="recipient",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Укажите автора",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Автор",
+            ),
         ),
     ]

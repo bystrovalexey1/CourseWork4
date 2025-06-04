@@ -7,23 +7,55 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletters', '0001_initial'),
+        ("newsletters", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='NewslettersAttempt',
+            name="NewslettersAttempt",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('attempt_send_data', models.DateTimeField(auto_now=True, verbose_name='дата и время попытки')),
-                ('attempt_status', models.CharField(choices=[('успешно', 'Успешно'), ('не успешно', 'Не успешно')], default='успешно', max_length=10)),
-                ('answer', models.TextField(verbose_name='Текст ответа от почтового сервера')),
-                ('distribution', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='newsletters.distribution', verbose_name='Рассылка')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "attempt_send_data",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="дата и время попытки"
+                    ),
+                ),
+                (
+                    "attempt_status",
+                    models.CharField(
+                        choices=[("успешно", "Успешно"), ("не успешно", "Не успешно")],
+                        default="успешно",
+                        max_length=10,
+                    ),
+                ),
+                (
+                    "answer",
+                    models.TextField(verbose_name="Текст ответа от почтового сервера"),
+                ),
+                (
+                    "distribution",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="newsletters.distribution",
+                        verbose_name="Рассылка",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Попытка рассылки',
-                'verbose_name_plural': 'Попытки рассылок',
-                'ordering': ['id'],
+                "verbose_name": "Попытка рассылки",
+                "verbose_name_plural": "Попытки рассылок",
+                "ordering": ["id"],
             },
         ),
     ]

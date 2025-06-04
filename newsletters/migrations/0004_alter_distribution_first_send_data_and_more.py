@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletters', '0003_distribution_owner_message_owner_recipient_owner'),
+        ("newsletters", "0003_distribution_owner_message_owner_recipient_owner"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='distribution',
-            name='first_send_data',
-            field=models.DateTimeField(verbose_name='дата первой отправки'),
+            model_name="distribution",
+            name="first_send_data",
+            field=models.DateTimeField(verbose_name="дата первой отправки"),
         ),
         migrations.AlterField(
-            model_name='distribution',
-            name='last_send_data',
-            field=models.DateTimeField(verbose_name='дата последней отправки'),
+            model_name="distribution",
+            name="last_send_data",
+            field=models.DateTimeField(verbose_name="дата последней отправки"),
         ),
     ]

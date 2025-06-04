@@ -46,9 +46,7 @@ def send_distribution_task(self, distribution_id):
             NewslettersAttempt.objects.create(
                 distribution=distribution, status="не успешно", server_response=str(e)
             )
-            logger.error(
-                f"Ошибка отправки на {recipient.email} {distribution.pk}: {e}"
-            )
+            logger.error(f"Ошибка отправки на {recipient.email} {distribution.pk}: {e}")
             raise self.retry(exc=e, countdown=60)  # Повторите попытку через 60 секунд
 
     distribution.status = "завершена"
