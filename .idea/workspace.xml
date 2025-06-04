@@ -4,53 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="301acf32-645f-44bb-9cad-50e1adceb71e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env sample" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/CourseWork4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/templates/distribution_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/templates/message_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/templates/recipient_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsletters/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirments.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/scripts/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/management/commands/createsuperadmin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+    <list default="true" id="301acf32-645f-44bb-9cad-50e1adceb71e" name="Changes" comment="do some tasks">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +15,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feauture-2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;bystrovalexey1&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bystrovalexey1/CourseWork4.git&quot;,
+    &quot;accountId&quot;: &quot;ab74509b-fba9-4ad1-9c32-2615ffee86e8&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -82,10 +54,15 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#1 on feauture-1",
     "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexey\PycharmProjects\CourseWork4\newsletters\management\commands" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -102,6 +79,52 @@
       <option name="presentableId" value="Default" />
       <updated>1748278624162</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial">
+      <option name="closed" value="true" />
+      <created>1748543879677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748543879677</updated>
+    </task>
+    <task id="LOCAL-00002" summary="do some tasks">
+      <option name="closed" value="true" />
+      <created>1748884769243</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748884769243</updated>
+    </task>
+    <task id="LOCAL-00003" summary="do some tasks">
+      <option name="closed" value="true" />
+      <created>1748886616011</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748886616011</updated>
+    </task>
+    <task id="LOCAL-00004" summary="do some tasks">
+      <option name="closed" value="true" />
+      <created>1748887205529</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748887205529</updated>
+    </task>
+    <task id="LOCAL-00005" summary="do some tasks">
+      <option name="closed" value="true" />
+      <created>1749053419034</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749053419034</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial" />
+    <MESSAGE value="do some tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="do some tasks" />
   </component>
 </project>
