@@ -107,7 +107,7 @@ class DistributionCreateView(LoginRequiredMixin, CreateView):
 
         DjangoJob.objects.create(
             name=f"distribution_task_{distribution.pk}",
-            task="distribution.tasks.schedule_distribution_wrapper",
+            task="newsletters.tasks.schedule_distribution_wrapper",
             args=[str(distribution.pk)],
             next_run_time=first_send_data,
             end_datetime=last_send_data,
