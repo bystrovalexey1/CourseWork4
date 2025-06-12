@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     "newsletters",
     "users",
+    "django_apscheduler",
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,51 @@ CACHES = {
         'LOCATION': 'redis://localhost:6379/1',
     }
 }
+
+# При желании вы можете настроить планировщик
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Удобочитаемый формат
+APSCHEDULER_RUN_NOW_TIMEOUT = 5  # секунд
+
+# При желании вы можете настроить хранилище заданий
+APSCHEDULER_JOBSTORES = {
+    "default": {"ENGINE": "django_apscheduler.jobstores:DjangoJobStore"}
+}
+
+SCHEDULER_CONFIG = {
+    "apscheduler.jobstores.default.class": "django_apscheduler.jobstores:DjangoJobStore",
+    "apscheduler.executors.default.class": "apscheduler.executors.pool:ThreadPoolExecutor",
+    "apscheduler.executors.default.max_workers": "20",
+    "apscheduler.job_defaults.coalesce": "false",
+    "apscheduler.timezone": os.environ.get("TZ", "Europe/Moscow"),
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {"format": "%(levelname)s %(asctime)s %(module)s %(message)s"},
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": "mailing.log",
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        "mailing": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
+
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"

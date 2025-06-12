@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Рассылки{% endblock %}
+
+{% block content %}
+{% for news in object_list %}
+<div class="card mt-5">
+    <div class="card-body">
+        <a class="fs-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+           href="{% url 'newsletters:distribution_detail' news.pk  %}"/>{{ news.message.theme }}</a>
+        <div class="d-grid gap-2">
+            {% if news.status == 'создана' %}
+            <p>
+                <button type="button" class="btn btn-outline-info text-dark mt-3">{{ news.status }}</button>
+            </p>
+            {% elif news.status == 'запущена' %}
+            <p>
+                <button type="button" class="btn btn-outline-success mt-3">{{ news.status }}</button>
+            </p>
+            {% elif news.status == 'завершена' %}
+            <p>
+                <button type="button" class="btn btn-outline-dark mt-3">{{ news.status }}</button>
+            </p>
+            {% endif %}
+        </div>
+        <a href="{% url 'newsletters:distribution_update' news.pk  %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url 'newsletters:distribution_delete' news.pk  %}" class="btn btn-danger">Удалить</a>
+        <p><form method="post" action="{% url 'newsletters:distribution_start' news.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-success">Запустить рассылку</button>
+        </form></p>
+    </div>
+    <div class="card-footer text-body-secondary">
+        Дата первой отправки: {{ news.first_send_data }}
+        Дата последней отправки: {{ news.last_send_data }}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

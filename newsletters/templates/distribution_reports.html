@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load distribution_extras %}
+{% block title %}Рассылки{% endblock %}
+
+{% block content %}
+<h2 class="text-center mt-5 mb-5">Отчеты по рассылкам</h2>
+
+    {% if distributions %}
+        <ul>
+            {% for distribution in distributions %}
+                <li>
+                    <b>Рассылка:</b> {{ distribution }}<br>
+                    <b>Статус:</b> {{ distribution.status }}<br>
+                    {% if newsletter_stats|get_item:distribution.id %}
+                        <b>Всего попыток:</b> {{ newsletter_stats|get_item:distribution.id.total_attempts }}<br>
+                        <b>Успешных попыток:</b> {{ newsletter_stats|get_item:distribution.id.successful_attempts }}<br>
+                        <b>Неудачных попыток:</b> {{ newsletter_stats|get_item:distribution.id.failed_attempts }}
+                    {% else %}
+                        <b>Пока нет попыток.</b>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>У вас пока нет рассылок.</p>
+    {% endif %}
+{% endblock %}
