@@ -7,8 +7,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 
 app = Celery(
     "config",
-    broker="redis://localhost:6379/0",  # Отрегулируйте, настроен ли ваш Redis по-другому
-    backend="redis://localhost:6379/0",
+    broker="redis://localhost:6379/2",  # Отрегулируйте, настроен ли ваш Redis по-другому
+    backend="redis://localhost:6379/2",
     include=["newsletters.tasks"],
 )  #  Задачи будут определены в почтовом приложении
 
